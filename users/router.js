@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Users = require('./users_model')
+const Users = require('./model')
 const bcrypt=require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -40,17 +40,17 @@ router.post("/login", (req, res) => {
         if (user && bcrypt.compareSync(password,user.password)){
         const token=generateToken(user);
           res.status(200).json({
-              user,
+              username:user.username,
               token
           });
         }
         else{
-            res.status(401).json({error_message: 'Invalid Credentials'})
+            res.status(401).json({error_message: '1 Invalid Credentials'})
         }
       })
       .catch(error => {
         console.log(error);
-        res.status(500).json({error_message:'Invalid Credentials'});
+        res.status(500).json({error_message:'2 Invalid Credentials'});
       });
 });
 

@@ -18,6 +18,6 @@ function addUser(user) {
     return db('users')
       .insert(user)
       .then(id =>{
-         return {username:user.username}
+         return {username:user.username, id:id}
     });
 }
