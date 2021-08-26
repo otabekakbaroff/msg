@@ -4,9 +4,14 @@ const db = require('../db/dbconfig')
 
 module.exports = {
   findUser,
-  addUser
+  addUser,
+  allUsers
 }
 
+
+function allUsers(){
+  return db('users')
+}
 
 
 function findUser(filter){

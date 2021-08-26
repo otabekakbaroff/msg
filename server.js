@@ -9,12 +9,17 @@ const helmet=require('helmet');
 const users=require('./users/router');
 
 
+server.use(
+    cors({
+        origin: "*"
+    })
+);
+
+server.use(helmet());
 
 server.use(express.json());
 
-server.use(cors());
 
-server.use(helmet());
 
 server.use('/api/users', users);
 

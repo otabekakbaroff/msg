@@ -54,5 +54,13 @@ router.post("/login", (req, res) => {
       });
 });
 
+
+router.get("/all-users",(req,res) => {
+  Users.allUsers().then(result=>{
+    res.status(200).json(result)
+  })
+})
+
+
   
 module.exports = router;
