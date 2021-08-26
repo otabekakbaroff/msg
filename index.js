@@ -21,8 +21,11 @@ io.on("connection", function(socket){
         console.log(users)
     })
     socket.on('private-message', message => {
-
-        // socket.to(users.message.to || 'unavailble').emit(message)
+        if(users.message.to){
+            socket.to(users.message.from).emit('user is offline')
+        }else{
+            socket.to(users.message.to).emit(message)
+        }
         console.log(message)
         console.log(users)
     })
